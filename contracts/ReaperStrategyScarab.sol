@@ -35,11 +35,9 @@ contract ReaperStrategyScarab is ReaperBaseStrategyv1_1 {
     /**
      * @dev Paths used to swap tokens:
      * {gscarabToWftmPath} - to swap {GSCARAB} to {WFTM}
-     * {wftmToLpToken0Path} - to swap {WFTM} to {lpToken0}
      * {wftmToLpToken1Path} - to swap {WFTM} to {lpToken1}
      */
     address[] public gscarabToWftmPath;
-    address[] public wftmToLpToken0Path;
     address[] public wftmToLpToken1Path;
 
     /**
@@ -67,7 +65,6 @@ contract ReaperStrategyScarab is ReaperBaseStrategyv1_1 {
         lpToken1 = IUniswapV2Pair(address(want)).token1();
 
         gscarabToWftmPath = [address(GSCARAB), address(WFTM)];
-        wftmToLpToken0Path = [address(WFTM), lpToken0];
         wftmToLpToken1Path = [address(WFTM), lpToken1];
         _giveAllowances();
     }
@@ -112,7 +109,6 @@ contract ReaperStrategyScarab is ReaperBaseStrategyv1_1 {
         _chargeFees();
 
         uint256 wftmBalHalf = WFTM.balanceOf(address(this)) / 2;
-        _swap(wftmBalHalf, wftmToLpToken0Path, SPIRIT_ROUTER);
         _swap(wftmBalHalf, wftmToLpToken1Path, SPIRIT_ROUTER);
 
         _addLiquidity();
@@ -221,8 +217,7 @@ contract ReaperStrategyScarab is ReaperBaseStrategyv1_1 {
         _swap(gscarabBal, gscarabToWftmPath, SPIRIT_ROUTER);
 
         uint256 wftmBalHalf = WFTM.balanceOf(address(this)) / 2;
-        _swap(wftmBalHalf, wftmToLpToken0Path, SPIRIT_ROUTER);
-        _swap(wftmBalHalf, wftmToLpToken0Path, SPIRIT_ROUTER);
+        _swap(wftmBalHalf, wftmToLpToken1Path, SPIRIT_ROUTER);
 
         _addLiquidity();
 
@@ -245,7 +240,7 @@ contract ReaperStrategyScarab is ReaperBaseStrategyv1_1 {
      *      - deposit {want} into {GSCARAB_REWARDS_POOL}
      *      - swap {GSCARAB} using {SPIRIT_ROUTER}
      *      - swap {WFTM} using {SPIRIT_ROUTER}
-     *      - add liquidity using {lpToken0} and {lpToken1} in {TOMB_ROUTER}
+     *      - add liquidity using {lpToken0} and {lpToken1} in {SPIRIT_ROUTER}
      */
     function _giveAllowances() internal override {
         want.safeApprove(address(GSCARAB_REWARDS_POOL), 0);
