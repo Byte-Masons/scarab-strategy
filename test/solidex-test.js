@@ -1,10 +1,10 @@
 const hre = require('hardhat');
 const chai = require('chai');
-const { solidity } = require('ethereum-waffle');
+const {solidity} = require('ethereum-waffle');
 chai.use(solidity);
-const { expect } = chai;
+const {expect} = chai;
 
-const moveTimeForward = async seconds => {
+const moveTimeForward = async (seconds) => {
   await network.provider.send('evm_increaseTime', [seconds]);
   await network.provider.send('evm_mine');
 };
@@ -101,7 +101,7 @@ describe('Vaults', function () {
     strategy = await hre.upgrades.deployProxy(
       Strategy,
       [vault.address, [treasury.address, paymentSplitterAddress], [strategistAddress], wantAddress],
-      { kind: 'uups' },
+      {kind: 'uups'},
     );
     await strategy.deployed();
 

@@ -1,13 +1,16 @@
 Notes
+
 - keep functions in roughly the same order as they appear in IStrategy.
 - keep internal functions close to their call site.
 
 TODOs
+
 - add basic test suite
 - update deployment scripts
 - complete deployment checklist
 
 Deployment checklist
+
 - bump harvest log cadence to 1 hours at least
 
 # Advanced Sample Hardhat Project

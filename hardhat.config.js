@@ -1,11 +1,11 @@
-require("dotenv").config();
+require('dotenv').config();
 
-require("@nomiclabs/hardhat-etherscan");
-require("@nomiclabs/hardhat-waffle");
-require("hardhat-gas-reporter");
-require("hardhat-interface-generator");
-require("hardhat-contract-sizer");
-require("solidity-coverage");
+require('@nomiclabs/hardhat-etherscan');
+require('@nomiclabs/hardhat-waffle');
+require('hardhat-gas-reporter');
+require('hardhat-interface-generator');
+require('hardhat-contract-sizer');
+require('solidity-coverage');
 require('@openzeppelin/hardhat-upgrades');
 
 const PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY;
@@ -18,7 +18,7 @@ module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.8.11",
+        version: '0.8.11',
         settings: {
           optimizer: {
             enabled: true,
@@ -32,12 +32,12 @@ module.exports = {
     mainnet: {
       url: `https://rpc.ftm.tools`,
       chainId: 250,
-      accounts: [`0x${PRIVATE_KEY}`],
+      accounts: [`${PRIVATE_KEY}`],
     },
     testnet: {
       url: `https://rpcapi-tracing.testnet.fantom.network`,
       chainId: 4002,
-      accounts: [`0x${PRIVATE_KEY}`],
+      accounts: [`${PRIVATE_KEY}`],
     },
   },
   etherscan: {

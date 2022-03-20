@@ -6,7 +6,7 @@ async function main() {
   const tokenSymbol = 'rfvAMM-USDC-OXD';
   const depositFee = 0;
   const tvlCap = ethers.utils.parseEther('2000');
-  const options = { gasPrice: 200000000000, gasLimit: 9000000 };
+  const options = {gasPrice: 200000000000, gasLimit: 9000000};
 
   const vault = await Vault.deploy(wantAddress, tokenName, tokenSymbol, depositFee, tvlCap, options);
 
@@ -16,7 +16,7 @@ async function main() {
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });

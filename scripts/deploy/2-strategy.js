@@ -14,7 +14,7 @@ async function main() {
   const strategy = await hre.upgrades.deployProxy(
     Strategy,
     [vaultAddress, [treasuryAddress, paymentSplitterAddress], [strategist1, strategist2, strategist3], wantAddress],
-    { kind: 'uups', timeout: 0, gasPrice: 300000000000, gasLimit: 9000000 },
+    {kind: 'uups', timeout: 0, gasPrice: 300000000000, gasLimit: 9000000},
   );
   await strategy.deployed();
   console.log('Strategy deployed to:', strategy.address);
@@ -22,7 +22,7 @@ async function main() {
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });
