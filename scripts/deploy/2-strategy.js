@@ -1,10 +1,11 @@
 const hre = require('hardhat');
 
 async function main() {
-  const vaultAddress = '';
+  const vaultAddress = '0xCf6b9984f44bA20bA3bBaf929380A5E9189Be9C4';
   const wantAddress = '0x78e70eF4eE5cc72FC25A8bDA4519c45594CcD8d4';
+  const poolId = 0;
 
-  const Strategy = await ethers.getContractFactory('ReaperAutoCompoundSolidexFarmer');
+  const Strategy = await ethers.getContractFactory('ReaperStrategyScarab');
   const treasuryAddress = '0x0e7c5313E9BB80b654734d9b7aB1FB01468deE3b';
   const paymentSplitterAddress = '0x63cbd4134c2253041F370472c130e92daE4Ff174';
   const strategist1 = '0x1E71AEE6081f62053123140aacC7a06021D77348';
@@ -13,7 +14,13 @@ async function main() {
 
   const strategy = await hre.upgrades.deployProxy(
     Strategy,
-    [vaultAddress, [treasuryAddress, paymentSplitterAddress], [strategist1, strategist2, strategist3], wantAddress],
+    [
+      vaultAddress,
+      [treasuryAddress, paymentSplitterAddress],
+      [strategist1, strategist2, strategist3],
+      wantAddress,
+      poolId,
+    ],
     {kind: 'uups', timeout: 0, gasPrice: 300000000000, gasLimit: 9000000},
   );
   await strategy.deployed();
