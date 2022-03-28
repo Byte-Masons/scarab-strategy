@@ -1,9 +1,9 @@
 async function main() {
   const Vault = await ethers.getContractFactory('ReaperVaultv1_4');
 
-  const wantAddress = '0x78e70eF4eE5cc72FC25A8bDA4519c45594CcD8d4';
-  const tokenName = 'Scarab FTM-SCARAB Crypt'; // Protocol + Want + Crypt
-  const tokenSymbol = 'rfSPIRIT-LP-FTM-SCARAB'; // rf + wantSymbol + pair if needed for clarification
+  const wantAddress = '0x27228140D72a7186F70eD3052C3318f2D55c404d';
+  const tokenName = 'Scarab FTM-GSCARAB Crypt'; // Protocol + Want + Crypt
+  const tokenSymbol = 'rfSPIRIT-LP-FTM-GSCARAB'; // rf + wantSymbol + pair if needed for clarification
   const depositFee = 0;
   const tvlCap = ethers.utils.parseEther('2000');
   const options = {gasPrice: 200000000000, gasLimit: 9000000};

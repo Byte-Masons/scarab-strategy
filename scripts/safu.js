@@ -12,6 +12,7 @@ const main = async () => {
     tx = await want.approve(vault.address, wantBalance, options);
     await tx.wait();
     console.log('APPROVED');
+    await new Promise(resolve => { setTimeout(resolve, 2000); });
     tx = await vault.depositAll(options);
     await tx.wait();
     console.log(`1 - Vault | Deposited ${wantBalance}`);
@@ -48,13 +49,15 @@ const main = async () => {
 
     wantBalance = await want.balanceOf(deployer.address);
     await want.approve(vault.address, wantBalance, options);
-    try {
-        tx = await vault.depositAll(options);
-        await tx.wait();
-        console.log(`Vault | Wrong place bud, you should not be here`);
-    } catch (error) {
-        console.log(`Vault | Deposit failed, that's good`);
-    }
+    console.log('APPROVED');
+    await new Promise(resolve => { setTimeout(resolve, 2000); });
+    // try {
+    //     tx = await vault.depositAll(options);
+    //     await tx.wait();
+    //     console.log(`Vault | Wrong place bud, you should not be here`);
+    // } catch (error) {
+    //     console.log(`Vault | Deposit failed, that's good`);
+    // }
 
     tx = await strategy.unpause(options);
     await tx.wait();

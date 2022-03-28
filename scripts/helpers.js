@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable node/no-unsupported-features/es-syntax */
 module.exports.getTools = async () => {
-  const vaultAddress = '0xCf6b9984f44bA20bA3bBaf929380A5E9189Be9C4';
-  const strategyAddress = '0xB0f0b751994820eA36644b74644683E1DdF2188B';
-  const wantAddress = '0x78e70eF4eE5cc72FC25A8bDA4519c45594CcD8d4';
+  const vaultAddress = '0xc007082d83f07F2bfDcB5679e325d1113e509238';
+  const strategyAddress = '0xEd08E7d3aDcbE545dCc39CC0B4Ef793E4759FfbD';
+  const wantAddress = '0x27228140D72a7186F70eD3052C3318f2D55c404d';
   const Strategy = await ethers.getContractFactory('ReaperStrategyScarab');
 
   const [deployer] = await ethers.getSigners();

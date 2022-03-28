@@ -1,9 +1,9 @@
 const hre = require('hardhat');
 
 async function main() {
-  const vaultAddress = '0xCf6b9984f44bA20bA3bBaf929380A5E9189Be9C4';
-  const wantAddress = '0x78e70eF4eE5cc72FC25A8bDA4519c45594CcD8d4';
-  const poolId = 0;
+  const vaultAddress = '0xc007082d83f07F2bfDcB5679e325d1113e509238';
+  const wantAddress = '0x27228140D72a7186F70eD3052C3318f2D55c404d';
+  const poolId = 1;
 
   const Strategy = await ethers.getContractFactory('ReaperStrategyScarab');
   const treasuryAddress = '0x0e7c5313E9BB80b654734d9b7aB1FB01468deE3b';
